@@ -40,6 +40,8 @@ docs/
   privacy-and-consent.md
   product-roadmap.md
   pricing.md
+logs/
+  project-log.md          Running project ledger
 config/
   school.example.toml
 data/
@@ -77,4 +79,3 @@ SA Attendance System can be sold as a per-student monthly add-on:
 - School: 100+ students
 
 See `docs/pricing.md` for the first pricing model.
-
