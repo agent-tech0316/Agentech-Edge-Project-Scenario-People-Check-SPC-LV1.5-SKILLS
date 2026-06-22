@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sa-attendance-system"
+version = "0.1.0"
+description = "Local-first SA attendance node for camera-assisted class check-in."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Agentech" }
+]
+dependencies = []
+
+[project.scripts]
+sa-attendance = "sa_attendance_system.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sa_attendance_system = ["resources/*.sql"]
+

@@ -1,0 +1,30 @@
+[school]
+name = "Example Dance School"
+timezone = "America/Los_Angeles"
+local_first = true
+
+[attendance]
+auto_confirm_threshold = 0.88
+needs_review_threshold = 0.70
+late_after_minutes = 10
+raw_media_retention_days = 60
+
+[mac_server]
+host = "0.0.0.0"
+port = 8787
+
+[[devices]]
+id = "teacher-iphone-01"
+name = "Teacher iPhone"
+device_type = "iphone_browser"
+actor_type = "teacher_assisted_camera"
+connection_kind = "lan_upload"
+
+[[camera_sources]]
+id = "studio-a-future-camera"
+name = "Studio A Future Camera"
+room_name = "Studio A"
+source_kind = "rtsp"
+stream_url = "rtsp://example.local/stream"
+status = "planned"
+
