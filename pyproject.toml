@@ -13,6 +13,9 @@ authors = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+vision = ["numpy", "opencv-python", "Pillow"]
+
 [project.scripts]
 sa-attendance = "sa_attendance_system.cli:main"
 
@@ -21,4 +24,3 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 sa_attendance_system = ["resources/*.sql"]
-

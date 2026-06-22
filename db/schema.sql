@@ -225,3 +225,79 @@ CREATE INDEX IF NOT EXISTS idx_records_session_student
 CREATE INDEX IF NOT EXISTS idx_memory_subject
   ON memory_facts(subject_type, subject_id, memory_type);
 
+CREATE TABLE IF NOT EXISTS people (
+  id TEXT PRIMARY KEY,
+  external_id TEXT UNIQUE,
+  display_name TEXT NOT NULL,
+  person_type TEXT NOT NULL DEFAULT 'student',
+  status TEXT NOT NULL DEFAULT 'active',
+  notes TEXT,
+  metadata_json TEXT NOT NULL DEFAULT '{}',
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS person_face_images (
+  id TEXT PRIMARY KEY,
+  person_id TEXT NOT NULL REFERENCES people(id) ON DELETE CASCADE,
+  media_asset_id TEXT REFERENCES media_assets(id) ON DELETE SET NULL,
+  source_observation_id TEXT,
+  embedding_model TEXT NOT NULL,
+  embedding_json TEXT NOT NULL,
+  face_box_json TEXT,
+  quality_score REAL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS captures (
+  id TEXT PRIMARY KEY,
+  media_asset_id TEXT NOT NULL REFERENCES media_assets(id) ON DELETE CASCADE,
+  source_kind TEXT NOT NULL DEFAULT 'api_upload',
+  source_label TEXT,
+  captured_at TEXT NOT NULL,
+  metadata_json TEXT NOT NULL DEFAULT '{}',
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS face_observations (
+  id TEXT PRIMARY KEY,
+  capture_id TEXT NOT NULL REFERENCES captures(id) ON DELETE CASCADE,
+  face_index INTEGER NOT NULL,
+  face_box_json TEXT NOT NULL,
+  quality_score REAL,
+  embedding_model TEXT NOT NULL,
+  embedding_json TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'unknown',
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS recognition_candidates (
+  id TEXT PRIMARY KEY,
+  observation_id TEXT NOT NULL REFERENCES face_observations(id) ON DELETE CASCADE,
+  person_id TEXT REFERENCES people(id) ON DELETE SET NULL,
+  confidence REAL NOT NULL,
+  rank INTEGER NOT NULL,
+  decision TEXT NOT NULL,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS recognition_feedback (
+  id TEXT PRIMARY KEY,
+  observation_id TEXT NOT NULL REFERENCES face_observations(id) ON DELETE CASCADE,
+  action TEXT NOT NULL,
+  person_id TEXT REFERENCES people(id) ON DELETE SET NULL,
+  notes TEXT,
+  created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_people_type_status
+  ON people(person_type, status);
+
+CREATE INDEX IF NOT EXISTS idx_person_face_images_person
+  ON person_face_images(person_id);
+
+CREATE INDEX IF NOT EXISTS idx_face_observations_capture
+  ON face_observations(capture_id);
+
+CREATE INDEX IF NOT EXISTS idx_recognition_candidates_observation
+  ON recognition_candidates(observation_id, rank);

@@ -38,6 +38,11 @@ def database_summary(db_path: Path) -> dict[str, int]:
             "devices",
             "memory_facts",
             "skill_runs",
+            "people",
+            "person_face_images",
+            "captures",
+            "face_observations",
+            "recognition_candidates",
         ]
         return {
             table: conn.execute(f"SELECT COUNT(*) AS count FROM {table}").fetchone()[
@@ -45,4 +50,3 @@ def database_summary(db_path: Path) -> dict[str, int]:
             ]
             for table in tables
         }
-

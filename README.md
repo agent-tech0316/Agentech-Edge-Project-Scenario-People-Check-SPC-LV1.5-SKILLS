@@ -1,23 +1,22 @@
 # SA Attendance System
 
-Local-first attendance intelligence for dance schools and other class-based studios.
+Local-first face recognition API for dance schools and other class-based studios.
 
-The first version treats the teacher plus iPhone camera as the "robot": the human aims
-the camera, the Mac does recognition, and the teacher only resolves uncertain cases.
-Later versions can replace that actor with classroom cameras, monitoring systems, or
-physical robots without changing the core attendance model.
+The first MVP is intentionally smaller than a full attendance app: it is a Face API.
+Given a photo, it detects faces, matches known students/teachers/staff, counts unknown
+faces, and returns JSON for another workflow app to use.
 
 ## Product Promise
 
-One photo, one class, attendance done.
+One photo in, recognized people out.
 
-The system is designed around this daily flow:
+The first API is designed around this flow:
 
-1. The teacher opens today's class on the Mac.
-2. The iPhone scans a QR code and captures a group photo or short scan.
-3. The Mac detects faces, matches students, and marks high-confidence attendance.
-4. The teacher confirms only uncertain faces.
-5. The system exports records and learns from corrections.
+1. Create people: student, teacher, staff, or unknown.
+2. Enroll face images for known people.
+3. Upload a photo from an iPhone, camera, monitor screenshot, or another app.
+4. Receive face count, matched people, uncertain people, and unknown people.
+5. Assign uncertain/unknown faces later so the system learns.
 
 ## Architecture Shape
 
@@ -32,14 +31,19 @@ packages/
   core/                  Shared domain model, agent contracts, skill interfaces
 src/
   sa_attendance_system/  Early Python CLI and local database bootstrap
+tests/
+  test_face_api_service.py
 db/
   schema.sql             SQLite-first canonical schema
 docs/
   architecture.md
+  api.md
   database-memory-skills-terminal.md
+  decisions.md
   privacy-and-consent.md
   product-roadmap.md
   pricing.md
+  sdk.md
 logs/
   project-log.md          Running project ledger
 config/
@@ -64,11 +68,21 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -e .
 sa-attendance init --db data/attendance.sqlite
-sa-attendance info --db data/attendance.sqlite
+sa-attendance serve --db data/attendance.sqlite --media-dir data/media
 ```
 
 No cloud dependency is required for the first version. Student data and face data should
 stay on the school Mac by default.
+
+## Face API Quick Test
+
+```bash
+PYTHONPATH=src python3 -m sa_attendance_system.cli create-person "Sarah" --type student
+PYTHONPATH=src python3 -m sa_attendance_system.cli enroll-face person_xxx photos/sarah.jpg
+PYTHONPATH=src python3 -m sa_attendance_system.cli recognize photos/class-photo.jpg
+```
+
+See `docs/api.md` and `docs/sdk.md` for HTTP and Python SDK usage.
 
 ## First Commercial SKU
 

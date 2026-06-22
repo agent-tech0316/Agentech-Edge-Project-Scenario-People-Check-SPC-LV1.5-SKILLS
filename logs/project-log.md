@@ -35,3 +35,15 @@ chronological, and factual.
   explicit authenticated path.
 - Next required decision: confirm the GitHub owner and either provide token-based
   access or approve using the logged-in browser session.
+- Confirmed GitHub owner should be `AGENTECH`.
+- Narrowed the MVP scope from full course attendance to a standalone Face API:
+  create people, enroll face images, recognize faces in uploaded photos, count
+  matched/uncertain/unknown faces, and expose everything over API/SDK.
+- Added Face API database tables for people, person face images, captures, face
+  observations, recognition candidates, and recognition feedback.
+- Added local service layer, OpenCV-based MVP vision engine, HTTP API, Python SDK,
+  CLI commands, API docs, SDK docs, architecture decisions, and a service test.
+- Verified the service test passes.
+- Verified Python compilation with `PYTHONPYCACHEPREFIX` pointed to `/tmp`.
+- Verified the temporary localhost API on port 8876 with `GET /health`.
+- Verified SDK flow: create person, enroll face, recognize image, and read stats.
