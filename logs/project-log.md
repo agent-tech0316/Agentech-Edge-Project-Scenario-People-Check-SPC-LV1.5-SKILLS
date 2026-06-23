@@ -55,3 +55,8 @@ chronological, and factual.
 - Kept the existing Python module path stable for now to reduce risk before GitHub
   cloud push.
 - Confirmed target GitHub owner/account should be `agent-tech0316` / `info@agent-tech.ai`.
+- Checked the intended GitHub SSH remote
+  `git@github.com:agent-tech0316/Agentech-Edge-Project-Scenario-People-Check-SPC-LV1.5-SKILLS.git`.
+  SSH authentication is not available on this machine yet, so cloud push is pending
+  a GitHub token, GitHub CLI login, SSH key setup, or explicit browser-based repo
+  creation approval.
