@@ -37,3 +37,22 @@ Implications:
 - The SDK calls HTTP JSON endpoints, so external apps do not depend on internals.
 - The current vision engine is replaceable.
 
+## 2026-06-23: Rename Project to SPC LV1.5 Skills
+
+Decision:
+
+Use the external project name `Agentech Edge Project - Scenario People Check (SPC) -
+LV1.5 SKILLS`.
+
+Reason:
+
+The capability is broader than one school attendance app. The reusable skill is checking
+who appears in a scenario image, then returning matched, uncertain, and unknown people
+to another workflow.
+
+Implications:
+
+- The Python distribution slug is `agentech-spc-lv15-skills`.
+- The existing Python module path remains `sa_attendance_system` for now to avoid
+  unnecessary churn before cloud push.
+- The HTTP and SDK behavior stays compatible with the existing Face API MVP.

@@ -1,4 +1,3 @@
-"""SA Attendance System package."""
+"""Agentech Scenario People Check package."""
 
 __version__ = "0.1.0"
-

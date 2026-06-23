@@ -48,11 +48,21 @@ class SAAttendanceRequestHandler(BaseHTTPRequestHandler):
             path = parsed.path.rstrip("/") or "/"
 
             if method == "GET" and path == "/health":
-                self.send_json({"status": "ok", "service": "sa-attendance-system"})
+                self.send_json(
+                    {
+                        "status": "ok",
+                        "service": "agentech-spc-lv15-skills",
+                    }
+                )
                 return
 
             if method == "GET" and path in {"/", "/v1"}:
-                self.send_json({"name": "SA Attendance System", "routes": API_ROUTES})
+                self.send_json(
+                    {
+                        "name": "Agentech Edge Project - Scenario People Check (SPC) - LV1.5 SKILLS",
+                        "routes": API_ROUTES,
+                    }
+                )
                 return
 
             if method == "GET" and path == "/v1/stats":
@@ -181,4 +191,3 @@ def make_server(
 
     Handler.service = service
     return ThreadingHTTPServer((host, port), Handler)
-

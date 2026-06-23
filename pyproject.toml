@@ -3,9 +3,9 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sa-attendance-system"
+name = "agentech-spc-lv15-skills"
 version = "0.1.0"
-description = "Local-first SA attendance node for camera-assisted class check-in."
+description = "Agentech Edge Project - Scenario People Check (SPC) - LV1.5 SKILLS."
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [

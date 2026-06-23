@@ -13,7 +13,7 @@ from .service import SAAttendanceService
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="sa-attendance",
-        description="Local-first command tools for SA Attendance System.",
+        description="Local-first command tools for Agentech SPC LV1.5 Skills.",
     )
     parser.add_argument("--version", action="version", version=__version__)
 
@@ -113,7 +113,7 @@ def main() -> None:
 
     if args.command == "init":
         init_database(args.db)
-        print(f"Initialized SA Attendance database at {args.db}")
+        print(f"Initialized SPC database at {args.db}")
         return
 
     if args.command == "info":
@@ -129,11 +129,11 @@ def main() -> None:
             db_path=args.db,
             media_dir=args.media_dir,
         )
-        print(f"SA Attendance API running at http://{args.host}:{args.port}", flush=True)
+        print(f"SPC API running at http://{args.host}:{args.port}", flush=True)
         try:
             server.serve_forever()
         except KeyboardInterrupt:
-            print("\nSA Attendance API stopped.")
+            print("\nSPC API stopped.")
         return
 
     service = SAAttendanceService(db_path=args.db, media_dir=args.media_dir)

@@ -1,6 +1,6 @@
-# Face API
+# Scenario People Check API
 
-The first MVP is a face recognition capability layer. It does not manage courses,
+The first MVP is a people-check capability layer. It does not manage courses,
 enrollment, tuition, or attendance workflow. Other apps can call this API and decide
 what to do with the result.
 
@@ -139,4 +139,3 @@ The current engine is intentionally simple:
 
 It is good enough to prove the API and workflow, but it is not the final commercial
 recognition model. The API is designed so the engine can be replaced later.
-

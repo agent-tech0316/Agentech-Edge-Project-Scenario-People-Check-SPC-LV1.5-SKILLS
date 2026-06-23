@@ -117,5 +117,4 @@ class SAAttendanceClient:
                 return json.loads(response.read().decode("utf-8"))
         except HTTPError as exc:
             detail = exc.read().decode("utf-8")
-            raise RuntimeError(f"SA Attendance API error {exc.code}: {detail}") from exc
-
+            raise RuntimeError(f"SPC API error {exc.code}: {detail}") from exc

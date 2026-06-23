@@ -1,10 +1,11 @@
-# SA Attendance System
+# Agentech Edge Project - Scenario People Check (SPC) - LV1.5 SKILLS
 
-Local-first face recognition API for dance schools and other class-based studios.
+Local-first people-check and face recognition API for edge scenarios such as dance
+schools, course photos, classroom snapshots, camera frames, and workflow apps.
 
-The first MVP is intentionally smaller than a full attendance app: it is a Face API.
-Given a photo, it detects faces, matches known students/teachers/staff, counts unknown
-faces, and returns JSON for another workflow app to use.
+The first MVP is intentionally smaller than a full attendance app: it is a Scenario
+People Check API. Given a photo, it detects faces, matches known students/teachers/staff,
+counts unknown faces, and returns JSON for another workflow app to use.
 
 ## Product Promise
 
@@ -74,7 +75,7 @@ sa-attendance serve --db data/attendance.sqlite --media-dir data/media
 No cloud dependency is required for the first version. Student data and face data should
 stay on the school Mac by default.
 
-## Face API Quick Test
+## SPC API Quick Test
 
 ```bash
 PYTHONPATH=src python3 -m sa_attendance_system.cli create-person "Sarah" --type student
@@ -86,7 +87,7 @@ See `docs/api.md` and `docs/sdk.md` for HTTP and Python SDK usage.
 
 ## First Commercial SKU
 
-SA Attendance System can be sold as a per-student monthly add-on:
+Scenario People Check can be sold as a per-student or per-scenario monthly add-on:
 
 - Starter: up to 20 students
 - Studio: 21 to 100 students

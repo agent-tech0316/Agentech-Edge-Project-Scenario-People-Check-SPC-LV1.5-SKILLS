@@ -47,3 +47,11 @@ chronological, and factual.
 - Verified Python compilation with `PYTHONPYCACHEPREFIX` pointed to `/tmp`.
 - Verified the temporary localhost API on port 8876 with `GET /health`.
 - Verified SDK flow: create person, enroll face, recognize image, and read stats.
+
+## 2026-06-23
+
+- Renamed the external project identity to `Agentech Edge Project - Scenario People
+  Check (SPC) - LV1.5 SKILLS`.
+- Kept the existing Python module path stable for now to reduce risk before GitHub
+  cloud push.
+- Confirmed target GitHub owner/account should be `agent-tech0316` / `info@agent-tech.ai`.

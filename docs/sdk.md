@@ -1,6 +1,6 @@
 # Python SDK
 
-The SDK is a thin wrapper over the local Face API.
+The SDK is a thin wrapper over the local Scenario People Check API.
 
 ## Start API
 
@@ -43,4 +43,3 @@ client.assign_observation(
 ```
 
 This lets the system learn from unknown or uncertain faces over time.
-
