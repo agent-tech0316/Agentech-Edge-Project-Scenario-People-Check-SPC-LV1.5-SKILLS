@@ -60,3 +60,8 @@ chronological, and factual.
   SSH authentication is not available on this machine yet, so cloud push is pending
   a GitHub token, GitHub CLI login, SSH key setup, or explicit browser-based repo
   creation approval.
+- Verified GitHub token authentication for `agent-tech0316`.
+- Confirmed the public GitHub repository exists:
+  `https://github.com/agent-tech0316/Agentech-Edge-Project-Scenario-People-Check-SPC-LV1.5-SKILLS`.
+- Configured `origin` with the public HTTPS repository URL without storing the token
+  in git remote config.
