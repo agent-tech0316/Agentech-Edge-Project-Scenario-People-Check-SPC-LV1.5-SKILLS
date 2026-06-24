@@ -67,3 +67,9 @@ chronological, and factual.
   in git remote config.
 - Split README into GitHub language-switch files: `README.md` language entry,
   `README.zh-CN.md` Chinese documentation, and `README.en.md` English documentation.
+- Installed portable GitHub CLI `gh` v2.95.0 under
+  `/Users/billyuanwang/Documents/Codex/tools/gh-cli/`.
+- Verified `gh` is authenticated as `agent-tech0316` through the system keyring.
+- Ran `gh auth setup-git` so future HTTPS git operations can use GitHub CLI
+  authentication instead of manually provided tokens.
+- Verified future push access with `git push --dry-run`.
