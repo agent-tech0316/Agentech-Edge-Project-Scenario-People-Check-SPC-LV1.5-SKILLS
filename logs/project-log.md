@@ -65,3 +65,5 @@ chronological, and factual.
   `https://github.com/agent-tech0316/Agentech-Edge-Project-Scenario-People-Check-SPC-LV1.5-SKILLS`.
 - Configured `origin` with the public HTTPS repository URL without storing the token
   in git remote config.
+- Split README into GitHub language-switch files: `README.md` language entry,
+  `README.zh-CN.md` Chinese documentation, and `README.en.md` English documentation.
